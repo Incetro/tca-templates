@@ -1,5 +1,5 @@
 //
-//  TemplateModuleAction.swift
+//  TemplateModuleListAction.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -9,9 +9,9 @@
 import Foundation
 import TCANetworkReducers
 
-// MARK: - TemplateModuleAction
+// MARK: - TemplateModuleListAction
 
-public enum TemplateModuleAction: Equatable {
+public enum TemplateModuleListAction: Equatable {
     
     // MARK: - Cases
     
@@ -32,5 +32,5 @@ public enum TemplateModuleAction: Equatable {
     
     // MARK: - Pagination
     
-    case templateModulePagination(PaginationAction<String, NSError>)
+    case templateModuleListPagination(PaginationAction<String, NSError>)
 }

@@ -1,5 +1,5 @@
 //
-//  TemplateModuleState.swift
+//  TemplateModuleListState.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -8,12 +8,15 @@
 
 import Foundation
 import TCA
+import TCANetworkReducers
 
-// MARK: - TemplateModuleState
+// MARK: - TemplateModuleListState
 
-public struct TemplateModuleState: Equatable {
+public struct TemplateModuleListState: Equatable {
     
     // MARK: - Properties
+    
+    // MARK: - Children
     
     /// Identified array of `TemplateModuleItemState`
     ///
@@ -21,13 +24,19 @@ public struct TemplateModuleState: Equatable {
     /// We use it here to integrate `TemplateModuleItemState` array logic inside current module.
     /// If you change the state inside one of the `TemplateModuleItemState` module items then all changes will be saved here.
     public var templateModuleItems: IdentifiedArrayOf<TemplateModuleItemState>
+    
+    // MARK: - Relodable
+    
+    /// ReloadableState instace for network operations
+    public var reloadableTemplateModuleList: ReloadableState<String, NSError>
 }
 
-// MARK: - Initailziers
+// MARK: - Initializers
 
-extension TemplateModuleState {
-    
+extension TemplateModuleListState {
+ 
     public init() {
+        self.reloadableTemplateModuleList = ReloadableState()
         self.templateModuleItems = []
     }
 }

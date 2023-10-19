@@ -28,6 +28,13 @@ public struct TemplateModuleReducer: ReducerProtocol {
             switch action {
             case .onAppear:
                 return .value(.reloadableTemplateModule(.load))
+            case .reloadableTemplateModule(.cacheResponse(.success(let data))):
+                break
+            case .reloadableTemplateModule(.response(.success(let data))):
+                break
+            case .reloadableTemplateModule(.response(.failure(let error))),
+                 .reloadableTemplateModule(.cacheResponse(.failure(let error))):
+                break
             default:
                 break
             }

@@ -1,5 +1,5 @@
 //
-//  TemplateModuleAction.swift
+//  TemplateModuleListAction.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import TCANetworkReducers
 
-// MARK: - TemplateModuleAction
+// MARK: - TemplateModuleListAction
 
-public enum TemplateModuleAction: Equatable {
+public enum TemplateModuleListAction: Equatable {
     
     // MARK: - Cases
     
@@ -29,8 +28,4 @@ public enum TemplateModuleAction: Equatable {
     /// In short, the `templateModuleItem` case means that every action in `TemplateModuleItem` module
     /// will be sent to current module with target element identifier
     case templateModuleItem(id: TemplateModuleItemState.ID, action: TemplateModuleItemAction)
-    
-    // MARK: - Pagination
-    
-    case templateModulePagination(PaginationAction<String, NSError>)
 }

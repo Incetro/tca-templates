@@ -1,5 +1,5 @@
 //
-//  TemplateModuleState.swift
+//  TemplateModuleListState.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -10,9 +10,9 @@ import Foundation
 import TCA
 import TCANetworkReducers
 
-// MARK: - TemplateModuleState
+// MARK: - TemplateModuleListState
 
-public struct TemplateModuleState: Equatable {
+public struct TemplateModuleListState: Equatable {
     
     // MARK: - Properties
     
@@ -25,18 +25,18 @@ public struct TemplateModuleState: Equatable {
     /// If you change the state inside one of the `TemplateModuleItemState` module items then all changes will be saved here.
     public var templateModuleItems: IdentifiedArrayOf<TemplateModuleItemState>
     
-    // MARK: - Relodable
+    // MARK: - Pagination
     
-    /// ReloadableState instace for network operations
-    public var reloadableTemplateModule: IDReloadableState<String, String, NSError>
+    /// PaginationState instance
+    public var templateModuleListPagination: IDPaginationState<String, String>
 }
 
 // MARK: - Initializers
 
-extension TemplateModuleState {
+extension TemplateModuleListState {
  
     public init() {
-        self.reloadableTemplateModule = IDReloadableState(id: "")
+        self.templateModuleListPagination = IDPaginationState(id: "", pageSize: 30)
         self.templateModuleItems = []
     }
 }

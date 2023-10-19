@@ -14,6 +14,7 @@ public struct TemplateModuleItemState: Equatable, Identifiable {
     
     // MARK: - Properties
     
+    /// Item identifier
     public let id: String
 }
 

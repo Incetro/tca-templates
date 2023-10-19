@@ -1,5 +1,5 @@
 //
-//  TemplateModuleReducer.swift
+//  TemplateModuleListReducer.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -8,13 +8,13 @@
 
 import TCA
 
-// MARK: - TemplateModuleReducer
+// MARK: - TemplateModuleListReducer
 
-public struct TemplateModuleReducer: ReducerProtocol {
+public struct TemplateModuleListReducer: ReducerProtocol {
     
     // MARK: - Feature
     
-    public var body: some ReducerProtocol<TemplateModuleState, TemplateModuleAction> {
+    public var body: some ReducerProtocol<TemplateModuleListState, TemplateModuleListAction> {
         Reduce { state, action in
             switch action {
             default:
@@ -22,7 +22,7 @@ public struct TemplateModuleReducer: ReducerProtocol {
             }
             return .none
         }
-        .forEach(\.templateModuleItems, action: /TemplateModuleAction.templateModuleItem(id:action:)) {
+        .forEach(\.templateModuleItems, action: /TemplateModuleListAction.templateModuleItem(id:action:)) {
             TemplateModuleItemReducer()
         }
     }

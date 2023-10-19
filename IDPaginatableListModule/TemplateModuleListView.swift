@@ -1,5 +1,5 @@
 //
-//  TemplateModuleView.swift
+//  TemplateModuleListView.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -10,14 +10,14 @@ import SwiftUI
 import TCA
 import TCANetworkReducers
 
-// MARK: - TemplateModuleView
+// MARK: - TemplateModuleListView
 
-public struct TemplateModuleView: View {
+public struct TemplateModuleListView: View {
     
     // MARK: - Properties
     
-    /// The store powering the `TemplateModule` reducer
-    public let store: StoreOf<TemplateModuleReducer>
+    /// The store powering the `TemplateModuleList` reducer
+    public let store: StoreOf<TemplateModuleListReducer>
     
     // MARK: - View
     
@@ -28,16 +28,16 @@ public struct TemplateModuleView: View {
                     ForEachStore(
                         store.scope(
                             state: \.templateModuleItems,
-                            action: TemplateModuleAction.templateModuleItem(id:action:)
+                            action: TemplateModuleListAction.templateModuleItem(id:action:)
                         ),
                         content: TemplateModuleItemView.init
                     )
                     PaginationView(
                         store: store.scope(
                             state: { state in
-                                state.templateModulePagination.pagination
+                                state.templateModuleListPagination.pagination
                             },
-                            action: TemplateModuleAction.templateModulePagination
+                            action: TemplateModuleListAction.templateModuleListPagination
                         ),
                         loader: {
                             ProgressView()
@@ -57,12 +57,12 @@ public struct TemplateModuleView: View {
 
 // MARK: - Preview
 
-private struct TemplateModule_Previews: PreviewProvider {
+private struct TemplateModuleList_Previews: PreviewProvider {
     static var previews: some View {
-        TemplateModuleView(
+        TemplateModuleListView(
             store: Store(
-                initialState: TemplateModuleState(),
-                reducer: TemplateModuleReducer()
+                initialState: TemplateModuleListState(),
+                reducer: TemplateModuleListReducer()
             )
         )
     }

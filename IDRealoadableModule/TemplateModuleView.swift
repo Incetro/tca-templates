@@ -22,12 +22,22 @@ public struct TemplateModuleView: View {
     
     public var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                Spacer()
-                Text("This is TemplateModule")
-                    .font(.title)
-                    .padding()
-                Spacer()
+            IDReloadableView(
+                store: store.scope(
+                    state: \.reloadableTemplateModule,
+                    action: TemplateModuleAction.reloadableTemplateModule
+                ),
+                loader: {
+                    ProgressView()
+                }
+            ) {
+                VStack {
+                    Spacer()
+                    Text("This is TemplateModule")
+                        .font(.title)
+                        .padding()
+                    Spacer()
+                }
             }
             .onAppear {
                 viewStore.send(.onAppear)

@@ -1,5 +1,5 @@
 //
-//  TemplateModuleReducer.swift
+//  TemplateModuleListReducer.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -10,14 +10,14 @@ import TCA
 import TCANetworkReducers
 import Combine
 
-// MARK: - TemplateModuleReducer
+// MARK: - TemplateModuleListReducer
 
-public struct TemplateModuleReducer: ReducerProtocol {
+public struct TemplateModuleListReducer: ReducerProtocol {
     
     // MARK: - Feature
     
-    public var body: some ReducerProtocol<TemplateModuleState, TemplateModuleAction> {
-        Scope(state: \.reloadableTemplateModule, action: /TemplateModuleAction.reloadableTemplateModule) {
+    public var body: some ReducerProtocol<TemplateModuleListState, TemplateModuleListAction> {
+        Scope(state: \.reloadableTemplateModuleList, action: /TemplateModuleListAction.reloadableTemplateModuleList) {
             IDRelodableReducer { id in
                 Future { _ in
                 }
@@ -27,13 +27,13 @@ public struct TemplateModuleReducer: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                return .value(.reloadableTemplateModule(.load))
+                return .value(.reloadableTemplateModuleList(.load))
             default:
                 break
             }
             return .none
         }
-        .forEach(\.templateModuleItems, action: /TemplateModuleAction.templateModuleItem(id:action:)) {
+        .forEach(\.templateModuleItems, action: /TemplateModuleListAction.templateModuleItem(id:action:)) {
             TemplateModuleItemReducer()
         }
     }

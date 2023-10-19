@@ -1,5 +1,5 @@
 //
-//  TemplateModuleState.swift
+//  TemplateModuleListState.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -10,9 +10,9 @@ import Foundation
 import TCA
 import TCANetworkReducers
 
-// MARK: - TemplateModuleState
+// MARK: - TemplateModuleListState
 
-public struct TemplateModuleState: Equatable {
+public struct TemplateModuleListState: Equatable {
     
     // MARK: - Properties
     
@@ -28,15 +28,15 @@ public struct TemplateModuleState: Equatable {
     // MARK: - Pagination
     
     /// PaginationState instance
-    public var templateModulePagination: PaginationState<String>
+    public var templateModuleListPagination: PaginationState<String>
 }
 
 // MARK: - Initializers
 
-extension TemplateModuleState {
+extension TemplateModuleListState {
  
     public init() {
-        self.templateModulePagination = PaginationState(pageSize: 30)
+        self.templateModuleListPagination = PaginationState(pageSize: 30)
         self.templateModuleItems = []
     }
 }
