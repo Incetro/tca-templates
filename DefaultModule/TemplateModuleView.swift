@@ -41,13 +41,11 @@ public struct TemplateModuleView: View {
 
 // MARK: - Preview
 
-private struct TemplateModule_Previews: PreviewProvider {
-    static var previews: some View {
-        TemplateModuleView(
-            store: Store(
-                initialState: TemplateModuleState(),
-                reducer: TemplateModuleReducer()
-            )
+#Preview {
+    TemplateModuleView(
+        store: Store(
+            initialState: TemplateModuleState(),
+            reducer: TemplateModuleReducer()
         )
-    }
+    )
 }
