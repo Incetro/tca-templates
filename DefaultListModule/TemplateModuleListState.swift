@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import TCA
+import ComposableArchitecture
 
 // MARK: - TemplateModuleListState
 

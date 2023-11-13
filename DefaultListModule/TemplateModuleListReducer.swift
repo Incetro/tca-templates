@@ -6,15 +6,15 @@
 //  Copyright © 2023 Incetro Inc. All rights reserved.
 //
 
-import TCA
+import ComposableArchitecture
 
 // MARK: - TemplateModuleListReducer
 
-public struct TemplateModuleListReducer: ReducerProtocol {
+public struct TemplateModuleListReducer: Reducer {
     
     // MARK: - Feature
     
-    public var body: some ReducerProtocol<TemplateModuleListState, TemplateModuleListAction> {
+    public var body: some Reducer<TemplateModuleListState, TemplateModuleListAction> {
         Reduce { state, action in
             switch action {
             default:

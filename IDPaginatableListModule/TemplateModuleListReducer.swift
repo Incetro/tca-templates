@@ -6,17 +6,17 @@
 //  Copyright © 2023 Incetro Inc. All rights reserved.
 //
 
-import TCA
+import ComposableArchitecture
 import TCANetworkReducers
 import Combine
 
 // MARK: - TemplateModuleListReducer
 
-public struct TemplateModuleListReducer: ReducerProtocol {
+public struct TemplateModuleListReducer: Reducer {
     
     // MARK: - Feature
     
-    public var body: some ReducerProtocol<TemplateModuleListState, TemplateModuleListAction> {
+    public var body: some Reducer<TemplateModuleListState, TemplateModuleListAction> {
         Scope(state: \.templateModuleListPagination, action: /TemplateModuleListAction.templateModuleListPagination) {
             IDPaginationReducer { id, page, pageSize in
                 Future { _ in

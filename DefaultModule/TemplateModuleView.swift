@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import TCA
+import ComposableArchitecture
 
 // MARK: - TemplateModuleView
 

@@ -6,17 +6,17 @@
 //  Copyright © 2023 Incetro Inc. All rights reserved.
 //
 
-import TCA
+import ComposableArchitecture
 import TCANetworkReducers
 import Combine
 
 // MARK: - TemplateModuleReducer
 
-public struct TemplateModuleReducer: ReducerProtocol {
+public struct TemplateModuleReducer: Reducer {
     
     // MARK: - Feature
     
-    public var body: some ReducerProtocol<TemplateModuleState, TemplateModuleAction> {
+    public var body: some Reducer<TemplateModuleState, TemplateModuleAction> {
         Scope(state: \.reloadableTemplateModule, action: /TemplateModuleAction.reloadableTemplateModule) {
             RelodableReducer {
                 Future { _ in
@@ -27,7 +27,7 @@ public struct TemplateModuleReducer: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                return .value(.reloadableTemplateModule(.load))
+                return .send(.reloadableTemplateModule(.load))
             case .reloadableTemplateModule(.cacheResponse(.success(let data))):
                 break
             case .reloadableTemplateModule(.response(.success(let data))):
