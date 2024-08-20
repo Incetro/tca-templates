@@ -7,15 +7,17 @@
 //
 
 import Foundation
-import ComposableArchitecture
 import TCANetworkReducers
+import ComposableArchitecture
 
 // MARK: - TemplateModuleListState
 
 public struct TemplateModuleListState: Equatable {
+
+    // MARK: - Aliases
     
     // MARK: - Properties
-    
+
     // MARK: - Children
     
     /// Identified array of `TemplateModuleItemState`

@@ -10,11 +10,17 @@ import ComposableArchitecture
 
 // MARK: - TemplateModuleListReducer
 
-public struct TemplateModuleListReducer: Reducer {
+@Reducer
+public struct TemplateModuleListReducer {
+
+    // MARK: - Aliases
+
+    public typealias State  = TemplateModuleItemState
+    public typealias Action = TemplateModuleItemAction
     
     // MARK: - Feature
     
-    public var body: some Reducer<TemplateModuleListState, TemplateModuleListAction> {
+    public var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             default:
@@ -22,7 +28,7 @@ public struct TemplateModuleListReducer: Reducer {
             }
             return .none
         }
-        .forEach(\.templateModuleItems, action: /TemplateModuleListAction.templateModuleItem(id:action:)) {
+        .forEach(\.templateModuleItems, action: \.TemplateModuleListAction.templateModuleItem) {
             TemplateModuleItemReducer()
         }
     }

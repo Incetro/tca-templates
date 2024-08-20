@@ -1,5 +1,5 @@
 //
-//  TemplateModuleItemReducer.swift
+//  TemplateModuleItem.swift
 //  TCATemplate
 //
 //  Created by Dmitry Savinov on 19.10.2023.
@@ -8,13 +8,19 @@
 
 import ComposableArchitecture
 
-// MARK: - TemplateModuleItemReducer
+// MARK: - TemplateModuleItem
 
-public struct TemplateModuleItemReducer: Reducer {
+@Reducer
+public struct TemplateModuleItem {
+
+    // MARK: - Aliases
+
+    public typealias State  = TemplateModuleItemState
+    public typealias Action = TemplateModuleItemAction
     
     // MARK: - Feature
     
-    public var body: some Reducer<TemplateModuleItemState, TemplateModuleItemAction> {
+    public var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             default:

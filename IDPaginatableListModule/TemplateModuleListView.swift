@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 import TCANetworkReducers
+import ComposableArchitecture
 
 // MARK: - TemplateModuleListView
 
@@ -17,40 +17,38 @@ public struct TemplateModuleListView: View {
     // MARK: - Properties
     
     /// The store powering the `TemplateModuleList` reducer
-    public let store: StoreOf<TemplateModuleListReducer>
+    public let store: StoreOf<TemplateModuleList>
     
     // MARK: - View
     
     public var body: some View {
-        WithViewStore(store) { viewStore in
-            ScrollView(showsIndicators: false) {
-                LazyVStack(spacing: 16) {
-                    ForEachStore(
-                        store.scope(
-                            state: \.templateModuleItems,
-                            action: TemplateModuleListAction.templateModuleItem(id:action:)
-                        ),
-                        content: TemplateModuleItemView.init
-                    )
-                    PaginationView(
-                        store: store.scope(
-                            state: { state in
-                                state.templateModuleListPagination.pagination
-                            },
-                            action: TemplateModuleListAction.templateModuleListPagination
-                        ),
-                        loader: {
-                            ProgressView()
-                        }
-                    )
-                }
+        ScrollView(showsIndicators: false) {
+            LazyVStack(spacing: 16) {
+                  ForEachStore(
+                    store.scope(
+                        state: \.templateModuleItems,
+                        action: \.templateModuleItem
+                    ),
+                    content: TemplateModuleItemView.init
+                )
+                PaginationView(
+                    store: store.scope(
+                        state: { state in
+                            state.templateModuleListPagination.pagination
+                        },
+                        action: TemplateModuleListAction.templateModuleListPagination
+                    ),
+                    loader: {
+                        ProgressView()
+                    }
+                )
             }
-            .onAppear {
-                viewStore.send(.onAppear)
-            }
-            .onDisappear {
-                viewStore.send(.onDisappear)
-            }
+        }
+        .onAppear {
+            store.send(.onAppear)
+        }
+        .onDisappear {
+            store.send(.onDisappear)
         }
     }
 }
@@ -61,7 +59,7 @@ public struct TemplateModuleListView: View {
     TemplateModuleListView(
         store: Store(
             initialState: TemplateModuleListState(),
-            reducer: TemplateModuleListReducer()
+            reducer: { TemplateModuleList() }
         )
     )
 }

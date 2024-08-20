@@ -14,27 +14,19 @@ import ComposableArchitecture
 public struct TemplateModuleView: View {
     
     // MARK: - Properties
-    
+
     /// The store powering the `TemplateModule` reducer
-    public let store: StoreOf<TemplateModuleReducer>
+    public let store: StoreOf<TemplateModule>
     
     // MARK: - View
     
     public var body: some View {
-        WithViewStore(store) { viewStore in
-            VStack {
-                Spacer()
-                Text("This is TemplateModule")
-                    .font(.title)
-                    .padding()
-                Spacer()
-            }
-            .onAppear {
-                viewStore.send(.onAppear)
-            }
-            .onDisappear {
-                viewStore.send(.onDisappear)
-            }
+        VStack {
+            Spacer()
+            Text("This is TemplateModule")
+                .font(.title)
+                .padding()
+            Spacer()
         }
     }
 }
@@ -45,7 +37,7 @@ public struct TemplateModuleView: View {
     TemplateModuleView(
         store: Store(
             initialState: TemplateModuleState(),
-            reducer: TemplateModuleReducer()
+            reducer: { TemplateModule() }
         )
     )
 }

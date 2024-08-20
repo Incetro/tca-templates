@@ -16,27 +16,19 @@ public struct TemplateModuleListView: View {
     // MARK: - Properties
     
     /// The store powering the `TemplateModuleList` reducer
-    public let store: StoreOf<TemplateModuleListReducer>
+    public let store: StoreOf<TemplateModuleList>
     
     // MARK: - View
     
     public var body: some View {
-        WithViewStore(store) { viewStore in
-            VStack(spacing: 0) {
-                ForEachStore(
-                    store.scope(
-                        state: \.templateModuleItems,
-                        action: TemplateModuleListAction.templateModuleItem(id:action:)
-                    ),
-                    content: TemplateModuleItemView.init
-                )
-            }
-            .onAppear {
-                viewStore.send(.onAppear)
-            }
-            .onDisappear {
-                viewStore.send(.onDisappear)
-            }
+        VStack(spacing: 0) {
+            ForEachStore(
+                store.scope(
+                    state: \.templateModuleItems,
+                    action: \.templateModuleItem
+                ),
+                content: TemplateModuleItemView.init
+            )
         }
     }
 }
@@ -47,7 +39,7 @@ public struct TemplateModuleListView: View {
     TemplateModuleListView(
         store: Store(
             initialState: TemplateModuleListState(),
-            reducer: TemplateModuleListReducer()
+            reducer: { TemplateModuleList() }
         )
     )
 }

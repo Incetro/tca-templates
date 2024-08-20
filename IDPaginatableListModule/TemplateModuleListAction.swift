@@ -11,6 +11,7 @@ import TCANetworkReducers
 
 // MARK: - TemplateModuleListAction
 
+@CasePathable
 public enum TemplateModuleListAction: Equatable {
     
     // MARK: - Cases
@@ -32,5 +33,5 @@ public enum TemplateModuleListAction: Equatable {
     
     // MARK: - Pagination
     
-    case templateModuleListPagination(PaginationAction<String, NSError>)
+    case templateModuleListPagination(PaginationAction<TemplateModuleListState.ID, NSError>)
 }

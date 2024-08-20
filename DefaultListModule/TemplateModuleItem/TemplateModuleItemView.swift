@@ -16,22 +16,14 @@ public struct TemplateModuleItemView: View {
     // MARK: - Properties
     
     /// The store powering the `TemplateModuleItem` reducer
-    public let store: StoreOf<TemplateModuleItemReducer>
+    public let store: StoreOf<TemplateModuleItem>
     
     // MARK: - View
     
     public var body: some View {
-        WithViewStore(store) { viewStore in
-            Text("This is TemplateModuleItem \(viewStore.id)")
-                .font(.title)
-                .padding()
-                .onAppear {
-                    viewStore.send(.onAppear)
-                }
-                .onDisappear {
-                    viewStore.send(.onDisappear)
-                }
-        }
+        Text("This is TemplateModuleItem \(store.id)")
+            .font(.title)
+            .padding()
     }
 }
 
@@ -42,7 +34,7 @@ private struct TemplateModuleItem_Previews: PreviewProvider {
         TemplateModuleItemView(
             store: Store(
                 initialState: TemplateModuleItemState(),
-                reducer: TemplateModuleItemReducer()
+                reducer: { TemplateModuleItem() }
             )
         )
     }

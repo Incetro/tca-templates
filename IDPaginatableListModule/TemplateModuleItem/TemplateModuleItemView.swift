@@ -21,17 +21,9 @@ public struct TemplateModuleItemView: View {
     // MARK: - View
     
     public var body: some View {
-        WithViewStore(store) { viewStore in
-            Text("This is TemplateModuleItem \(viewStore.id)")
-                .font(.title)
-                .padding()
-                .onAppear {
-                    viewStore.send(.onAppear)
-                }
-                .onDisappear {
-                    viewStore.send(.onDisappear)
-                }
-        }
+        Text("This is TemplateModuleItem \(store.id)")
+            .font(.title)
+            .padding()
     }
 }
 
@@ -41,7 +33,7 @@ public struct TemplateModuleItemView: View {
     TemplateModuleItemView(
         store: Store(
             initialState: TemplateModuleItemState(),
-            reducer: TemplateModuleItemReducer()
+            reducer: { TemplateModuleItem() }
         )
     )
 }

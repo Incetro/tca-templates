@@ -6,10 +6,11 @@
 //  Copyright © 2023 Incetro Inc. All rights reserved.
 //
 
-import Foundation
+import ComposableArchitecture
 
 // MARK: - TemplateModuleItemState
 
+@ObservableState
 public struct TemplateModuleItemState: Equatable, Identifiable {
     
     // MARK: - Properties
