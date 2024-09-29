@@ -22,8 +22,8 @@ public struct TemplateModuleItemState: Equatable, Identifiable {
 // MARK: - Initailizers
 
 extension TemplateModuleItemState {
-    
-    public init() {
-        self.id = "\(Int.random(in: 0...999))"
+
+    public init(id: String) {
+        self.id = id
     }
 }

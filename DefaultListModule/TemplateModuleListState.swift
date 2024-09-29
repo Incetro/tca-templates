@@ -11,6 +11,7 @@ import ComposableArchitecture
 
 // MARK: - TemplateModuleListState
 
+@ObservableState
 public struct TemplateModuleListState: Equatable {
     
     // MARK: - Properties

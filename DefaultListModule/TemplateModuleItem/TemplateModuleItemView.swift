@@ -15,8 +15,16 @@ public struct TemplateModuleItemView: View {
     
     // MARK: - Properties
     
-    /// The store powering the `TemplateModuleItem` reducer
+    /// The store powering the `TemplateModuleItem` feature
     public let store: StoreOf<TemplateModuleItem>
+    
+    // MARK: - Initializers
+    
+    /// Default initializer
+    /// - Parameter store: The store powering the `TemplateModuleItem` feature
+    public init(store: StoreOf<TemplateModuleItem>) {
+        self.store = store
+    }
     
     // MARK: - View
     
@@ -34,7 +42,7 @@ private struct TemplateModuleItem_Previews: PreviewProvider {
         TemplateModuleItemView(
             store: Store(
                 initialState: TemplateModuleItemState(),
-                reducer: { TemplateModuleItem() }
+                reducer: { TemplateModuleItem(id: "1") }
             )
         )
     }

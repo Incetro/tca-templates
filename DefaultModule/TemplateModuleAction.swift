@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - TemplateModuleAction
 
+@CasePathable
 public enum TemplateModuleAction: Equatable {
     
     // MARK: - Cases

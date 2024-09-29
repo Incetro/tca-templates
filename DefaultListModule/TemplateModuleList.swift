@@ -28,7 +28,7 @@ public struct TemplateModuleListReducer {
             }
             return .none
         }
-        .forEach(\.templateModuleItems, action: \.TemplateModuleListAction.templateModuleItem) {
+        .forEach(\.templateModuleItems, action: \.templateModuleItem) {
             TemplateModuleItemReducer()
         }
     }

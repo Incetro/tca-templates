@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 // MARK: - TemplateModuleItemAction
 
+@CasePathable
 public enum TemplateModuleItemAction: Equatable {
     
     // MARK: - Cases

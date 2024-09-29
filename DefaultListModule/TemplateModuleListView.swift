@@ -15,8 +15,16 @@ public struct TemplateModuleListView: View {
     
     // MARK: - Properties
     
-    /// The store powering the `TemplateModuleList` reducer
+    /// The store powering the `TemplateModuleList` feature
     public let store: StoreOf<TemplateModuleList>
+    
+    // MARK: - Initializers
+    
+    /// Default initializer
+    /// - Parameter store: The store powering the `TemplateModuleList` feature
+    public init(store: StoreOf<TemplateModuleList>) {
+        self.store = store
+    }
     
     // MARK: - View
     
